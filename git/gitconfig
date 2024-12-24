@@ -45,5 +45,7 @@
 	diff = false
 [safe]
 	directory = *
+[user]
+	signingkey = /home/nhdinh/.ssh/id_ed25519.pub
 [gpg]
 	format = ssh
