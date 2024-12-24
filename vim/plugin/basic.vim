@@ -16,7 +16,7 @@ let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin' || os == 'Mac' || os == 'FreeBSD'
     language en_US.UTF-8
 elseif os == 'Linux'
-    language en_US.utf8
+    language C.utf8
     set clipboard=unnamedplus
 endif
 

@@ -8,9 +8,9 @@ LN := ln -sfn
 GITCONFIG_USER_PATH := ~/.gitconfig_user
 
 # User specific settings
-USER := Sascha Grunert
-EMAIL := sgrunert@redhat.com
-SIGNKEY := 79C3DE73D9F8B626A81B990109D97D153EF94D93
+USER := Hung Dinh
+EMAIL :=
+SIGNKEY :=
 
 .SILENT:
 .PHONY: install gitconfig-user uninstall update upgrade
@@ -52,6 +52,8 @@ install: gitconfig-user
 	$(LN) "$$PWD"/x11/Xdefaults ~/.Xdefaults
 	$(LN) "$$PWD"/x11/profile ~/.profile
 	$(LN) "$$PWD"/x11/xinitrc ~/.xinitrc
+	$(LN) "$$PWD"/oh-my-zsh ~/.oh-my-zsh
+	$(LN) "$$PWD"/zshrc ~/.zshrc
 	echo "Done"
 
 uninstall:

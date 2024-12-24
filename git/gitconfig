@@ -45,3 +45,5 @@
 	diff = false
 [safe]
 	directory = *
+[gpg]
+	format = ssh
