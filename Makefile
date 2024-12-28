@@ -48,6 +48,7 @@ install: gitconfig-user
 	$(LN) "$$PWD"/rustfmt/rustfmt.toml ~/.rustfmt.toml
 	$(LN) "$$PWD"/tig/tigrc ~/.tigrc
 	$(LN) "$$PWD"/tmux/tmux.conf ~/.tmux.conf
+	$(LN) "$$PWD"/tmux/tmux.local.conf ~/.tmux.local.conf
 	$(LN) "$$PWD"/vim ~/.vim
 	$(LN) "$$PWD"/x11/Xdefaults ~/.Xdefaults
 	$(LN) "$$PWD"/x11/profile ~/.profile
