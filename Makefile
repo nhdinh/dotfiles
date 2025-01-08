@@ -49,13 +49,13 @@ install: gitconfig-user
 	$(LN) "$$PWD"/tig/tigrc ~/.tigrc
 	$(LN) "$$PWD"/tmux/tmux.conf ~/.tmux.conf
 	$(LN) "$$PWD"/tmux/tmux.local.conf ~/.tmux.local.conf
-	$(LN) "$$PWD"/vim ~/.vim
 	$(LN) "$$PWD"/x11/Xdefaults ~/.Xdefaults
 	$(LN) "$$PWD"/x11/profile ~/.profile
 	$(LN) "$$PWD"/x11/xinitrc ~/.xinitrc
 	$(LN) "$$PWD"/oh-my-zsh ~/.oh-my-zsh
 	$(LN) "$$PWD"/zshrc ~/.zshrc
-	echo "Done"
+	$(LN) "$$PWD"/nvim ~/.config/nvim
+	echo "Done installed"
 
 uninstall:
 	rm ~/.hushlogin
@@ -85,33 +85,31 @@ uninstall:
 	rm ~/.rustfmt.toml
 	rm ~/.tigrc
 	rm ~/.tmux.conf
-	rm ~/.vim
+	rm ~/.tmux.local.conf
 	rm ~/.Xdefaults
 	rm ~/.profile
 	rm ~/.xinitrc
+	rm ~/.oh-my-zsh
+	rm ~/.zshrc
+	rm -rf ~/.config/nvim
 	rm $(GITCONFIG_USER_PATH)
-	echo "Done"
+	echo "Done uninstalled"
 
 update:
 	$(GIT) pull --rebase --autostash
 
 upgrade: update
-	$(CURL) https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S-DZ/Regular/complete/Meslo%20LG%20S%20DZ%20Regular%20Nerd%20Font%20Complete.ttf \
+	$(CURL) "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S-DZ/Regular/complete/Meslo LG S DZ Regular Nerd Font Complete.ttf" \
 		-o "fonts/Meslo LG S DZ Regular Nerd Font Complete.ttf"
-	$(CURL) https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S-DZ/Bold/complete/Meslo%20LG%20S%20DZ%20Bold%20Nerd%20Font%20Complete.ttf \
+	$(CURL) "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S-DZ/Bold/complete/Meslo LG S DZ Bold Nerd Font Complete.ttf" \
 		-o "fonts/Meslo LG S DZ Bold Nerd Font Complete.ttf"
-	$(CURL) https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S-DZ/Italic/complete/Meslo%20LG%20S%20DZ%20Italic%20Nerd%20Font%20Complete.ttf \
+	$(CURL) "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S-DZ/Italic/complete/Meslo LG S DZ Italic Nerd Font Complete.ttf" \
 		-o "fonts/Meslo LG S DZ Italic Nerd Font Complete.ttf"
-	$(CURL) https://github.com/cyrus-and/gdb-dashboard/raw/master/.gdbinit \
-		-o gdb/gdbinit
-	$(CURL) https://github.com/evanlucas/fish-kubectl-completions/raw/master/completions/kubectl.fish \
-		-o fish/completions/kubectl.fish
-	$(CURL) https://github.com/junegunn/fzf/raw/master/shell/key-bindings.fish \
-		-o fish/functions/fzf_key_bindings.fish
-	$(CURL) https://github.com/dracula/sublime/raw/master/Dracula.tmTheme \
-		-o bat/themes/Dracula.tmTheme
-	$(CURL) https://github.com/wting/autojump/raw/master/bin/autojump.fish \
-		-o fish/functions/autojump.fish
+	$(CURL) https://github.com/cyrus-and/gdb-dashboard/raw/master/.gdbinit -o gdb/gdbinit
+	$(CURL) https://github.com/evanlucas/fish-kubectl-completions/raw/master/completions/kubectl.fish -o fish/completions/kubectl.fish
+	$(CURL) https://github.com/junegunn/fzf/raw/master/shell/key-bindings.fish -o fish/functions/fzf_key_bindings.fish
+	$(CURL) https://github.com/dracula/sublime/raw/master/Dracula.tmTheme -o bat/themes/Dracula.tmTheme
+	$(CURL) https://github.com/wting/autojump/raw/master/bin/autojump.fish -o fish/functions/autojump.fish
 	$(GIT) add -A
 	$(GIT) diff-index --quiet HEAD || $(GIT) commit -sm "Upgraded external dependencies"
 	$(GIT) push

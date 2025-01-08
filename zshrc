@@ -102,3 +102,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export PATH="$PATH:/opt/nvim-linux64/bin:/home/nhdinh/.local/share/gem/ruby/3.2.0/bin:/home/nhdinh/.node_modules_global/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+PATH="/home/nhdinh/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/nhdinh/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/nhdinh/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/nhdinh/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/nhdinh/perl5"; export PERL_MM_OPT;
